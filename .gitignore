@@ -1,0 +1,23 @@
+*.egg-info
+*.pyc
+.tox
+.coverage
+.coverage.*
+coverage.xml
+.coveralls.yml
+.eggs
+.cache
+.pytest_cache
+.python-version
+.venv
+.idea/
+
+/build/
+/dist/
+/docs/_build/
+/htmlcov/
+
+
+# Editors
+.idea/
+.vscode/
