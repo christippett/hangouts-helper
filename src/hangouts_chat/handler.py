@@ -2,8 +2,6 @@ import os
 import logging
 from enum import Enum
 
-import message
-
 
 class EventType(Enum):
     ADDED_TO_SPACE = 'ADDED_TO_SPACE'
