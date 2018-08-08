@@ -89,10 +89,14 @@ class Message:
         self.cards.append(card)
 
     def output(self):
-        message = {'cards': [c.output() for c in self.cards]}
-        if self.text:
+        message = {}
+        if self.cards:
+            message.update({
+                'cards': [c.output() for c in self.cards]
+            })
+        if self.text is not None:
             message.update({'text': self.text})
-        if self.response_type:
+        if self.response_type is not None:
             response_type = {'type': self.response_type.value}
             if self.response_type == ResponseType.REQUEST_CONFIG:
                 response_type.update({'url': self.response_url})
