@@ -1,6 +1,6 @@
 import pytest
 
-from hangouts_chat.message import Message
+from hangouts_helper.message import Message
 
 
 def test_basic_text_message():

@@ -1,11 +1,11 @@
 Hangouts Chat Utils
 =============================================================
 
-[![PyPI version](https://img.shields.io/pypi/v/hangouts-chat-util.svg)](https://pypi.python.org/pypi/hangouts-chat-util)
-[![Build status](https://img.shields.io/travis/christippett/hangouts-chat-util.svg)](https://travis-ci.org/christippett/hangouts-chat-util)
-[![Coverage](https://img.shields.io/coveralls/github/christippett/hangouts-chat-util.svg)](https://coveralls.io/github/christippett/hangouts-chat-util?branch=master)
-[![Python versions](https://img.shields.io/pypi/pyversions/hangouts-chat-util.svg)](https://pypi.python.org/pypi/hangouts-chat-util)
-[![Github license](https://img.shields.io/github/license/christippett/hangouts-chat-util.svg)](https://github.com/christippett/hangouts-chat-util)
+[![PyPI version](https://img.shields.io/pypi/v/hangouts-helper.svg)](https://pypi.python.org/pypi/hangouts-helper)
+[![Build status](https://img.shields.io/travis/christippett/hangouts-helper.svg)](https://travis-ci.org/christippett/hangouts-helper)
+[![Coverage](https://img.shields.io/coveralls/github/christippett/hangouts-helper.svg)](https://coveralls.io/github/christippett/hangouts-helper?branch=master)
+[![Python versions](https://img.shields.io/pypi/pyversions/hangouts-helper.svg)](https://pypi.python.org/pypi/hangouts-helper)
+[![Github license](https://img.shields.io/github/license/christippett/hangouts-helper.svg)](https://github.com/christippett/hangouts-helper)
 
 Description
 ===========
@@ -18,7 +18,7 @@ Installation
 Install with `pip`:
 
 ``` bash
-pip install hangouts-chat-util
+pip install hangouts-helper
 ```
 
 Message Components
@@ -43,7 +43,7 @@ Example
 Using the [**Pizza Bot**](https://developers.google.com/hangouts/chat/reference/message-formats/cards#full_example_pizza_bot) example from the official Hangouts Chat API documentation, this is how you'd construct the same message using the components above.
 
 ```python
-from hangouts_chat.message import (Message, Card, CardHeader, Section,
+from hangouts_helper.message import (Message, Card, CardHeader, Section,
     Image, KeyValue, ButtonList, TextButton)
 
 message = Message()
@@ -137,8 +137,8 @@ Example
 ```python
 from enum import Enum
 
-from hangouts_chat.handler import HangoutsChatHandler, SpaceType
-from hangouts_chat.message import Message
+from hangouts_helper.handler import HangoutsChatHandler, SpaceType
+from hangouts_helper.message import Message
 
 
 class ActionMethod(Enum):

@@ -26,4 +26,4 @@ jobs:
         on:
           tags: true # only deploy on tagged commits
           branch: master
-          repo: christippett/hangouts-chat-util
+          repo: christippett/hangouts-helper
