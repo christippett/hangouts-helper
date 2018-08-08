@@ -165,3 +165,18 @@ class MyHangoutsChatHandler(HangoutsChatHandler):
         pass
 
 ```
+
+A Flask app that repsonds to Hangouts Chat events may look something like:
+
+```python
+from flask import Flask, jsonify
+app = Flask(__name__)
+
+@app.route('/')
+def hello_world():
+    event = request.json
+    handler = MyHangoutsChatHandler()
+    response_message = handler.handle_event(event)
+    return jsonify(response_message.output())
+
+```
