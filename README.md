@@ -1,4 +1,4 @@
-Hangouts Chat Utils
+Hangouts Chat Helper
 =============================================================
 
 [![PyPI version](https://img.shields.io/pypi/v/hangouts-helper.svg)](https://pypi.python.org/pypi/hangouts-helper)
