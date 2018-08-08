@@ -44,7 +44,7 @@ Using the [**Pizza Bot**](https://developers.google.com/hangouts/chat/reference/
 
 ```python
 from hangouts_chat.message import (Message, Card, CardHeader, Section,
-    KeyValue, ButtonList, TextButton)
+    Image, KeyValue, ButtonList, TextButton)
 
 message = Message()
 message.add_card(
