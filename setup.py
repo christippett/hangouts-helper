@@ -8,7 +8,7 @@ setup(
     name='hangouts-chat-utils',
     use_scm_version=True,
     setup_requires=['setuptools_scm'],
-    description='Helper classes for handling and responding to Hangouts Chat events',
+    description='Helper Python classes for handling and responding to Hangouts Chat events',
     long_description=LONG_DESCRIPTION,
     long_description_content_type='text/markdown',
     url='http://github.com/christippett/hangouts-chat-utils',

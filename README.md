@@ -10,7 +10,7 @@ Hangouts Chat Utils
 Description
 ===========
 
-Helper classes for handling and responding to Hangouts Chat events.
+Helper Python classes for handling and responding to Hangouts Chat events.
 
 Installation
 ============
