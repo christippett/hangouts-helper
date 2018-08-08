@@ -1,11 +1,11 @@
 Hangouts Chat Utils
 =============================================================
 
-[![PyPI version](https://img.shields.io/pypi/v/hangouts-chat-utils.svg)](https://pypi.python.org/pypi/hangouts-chat-utils)
-[![Build status](https://img.shields.io/travis/christippett/hangouts-chat-utils.svg)](https://travis-ci.org/christippett/hangouts-chat-utils)
-[![Coverage](https://img.shields.io/coveralls/github/christippett/hangouts-chat-utils.svg)](https://coveralls.io/github/christippett/hangouts-chat-utils?branch=master)
-[![Python versions](https://img.shields.io/pypi/pyversions/hangouts-chat-utils.svg)](https://pypi.python.org/pypi/hangouts-chat-utils)
-[![Github license](https://img.shields.io/github/license/christippett/hangouts-chat-utils.svg)](https://github.com/christippett/hangouts-chat-utils)
+[![PyPI version](https://img.shields.io/pypi/v/hangouts-chat-util.svg)](https://pypi.python.org/pypi/hangouts-chat-util)
+[![Build status](https://img.shields.io/travis/christippett/hangouts-chat-util.svg)](https://travis-ci.org/christippett/hangouts-chat-util)
+[![Coverage](https://img.shields.io/coveralls/github/christippett/hangouts-chat-util.svg)](https://coveralls.io/github/christippett/hangouts-chat-util?branch=master)
+[![Python versions](https://img.shields.io/pypi/pyversions/hangouts-chat-util.svg)](https://pypi.python.org/pypi/hangouts-chat-util)
+[![Github license](https://img.shields.io/github/license/christippett/hangouts-chat-util.svg)](https://github.com/christippett/hangouts-chat-util)
 
 Description
 ===========
@@ -18,7 +18,7 @@ Installation
 Install with `pip`:
 
 ``` bash
-pip install hangouts-chat-utils
+pip install hangouts-chat-util
 ```
 
 Message Components
