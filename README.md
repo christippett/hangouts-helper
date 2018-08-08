@@ -142,7 +142,7 @@ from hangouts_chat.message import Message
 
 
 class ActionMethod(Enum):
-    BUTTON_CLICKED = auto()
+    BUTTON_CLICKED = 'BUTTON_CLICKED'
 
 
 class MyHangoutsChatHandler(HangoutsChatHandler):
@@ -166,7 +166,7 @@ class MyHangoutsChatHandler(HangoutsChatHandler):
 
 ```
 
-A Flask app that repsonds to Hangouts Chat events may look something like:
+A Flask app that repsonds to Hangouts Chat events might look like:
 
 ```python
 from flask import Flask, jsonify
@@ -180,3 +180,11 @@ def hello_world():
     return jsonify(response_message.output())
 
 ```
+
+TODO
+====
+- Add examples for each component type in README
+- Document and add examples for adding OnClick events to widgets
+- Document Enums (`SpaceType`, `EventType`, `ActionMethod`, `Icon`, `ImageStyle`, `ResponseType`)
+- Document usage scenarios for `HangoutsChatHandler`
+- Add methods for interacting with Hangouts Chat API to `HangoutsChatHandler`
