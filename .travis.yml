@@ -1,29 +1,30 @@
 language: python
 sudo: false
 python:
-  - 3.4
-  - 3.5
-  - 3.6
-  - 3.7-dev
+- 3.4
+- 3.5
+- 3.6
+- 3.7-dev
 install:
-  - pip install -U pip
-  - pip install tox coveralls
+- pip install -U pip
+- pip install tox coveralls
 script:
-  - tox -e $(echo py$TRAVIS_PYTHON_VERSION | tr -d . | sed -e 's/pypypy/pypy/' | sed -e 's/-dev//')
+- tox -e $(echo py$TRAVIS_PYTHON_VERSION | tr -d . | sed -e 's/pypypy/pypy/' | sed
+  -e 's/-dev//')
 after_success:
-  - coveralls --verbose
+- coveralls --verbose
 notifications:
   email: false
 jobs:
   include:
-    - stage: deploy
-      deploy:
-        provider: pypi
-        user: c.tippett
-        password:
-          secure: SRRxxfZevAfV2u0d+O+SMH5tWLMEJ8tyKDENiCkNf77rHDyRil5vT5qKm0Rv9O+KR80wkbyOGSiWjOyo/HC1dbFJ3v6ZVVo9ER1LX9JzXzqeKe8x68d+4WEl46WaY8aCbN0Te/i/KSlEN8/r9J7AUYFUU3XGvyyrVlQ+uLPipU8ZLCIOOwbnWimYAi1nfXwXj+QnXT+uQCS53mCiP1dIdZvkE2jnSgalVLa9tHxhA/R0/GIBCBgJL7xjcR/30lmyNkj3a9954VsBZBvJPS8rPrKpXJq31C9k07OxiBsE0NhDp/6b/LCldn2+sbSOXNgW8V7Qn2DQjCa7p+qjRNeoNLltJYrzn6CIuXmQjJoiyVba5kvw9poa2bn6l3iJAOJrlqtQ9knc09o+Sj1DqhS8VuEo/TIyx/9QQ6bvbdx9TJ7JF8Tbcmq+fm0cKEUHwPYR/LPwrSDvT+ljUE06gxlCAGELD7MUUQV+j7ph2z8oDLh2Tq3fJu5jOFjHWJeR0Wlq7/kqcM8tVm8B7kKwEOuGcq75ve0VWt1AdXHMP2CC15qeLKBuiqmpMtFbZQEHndPKo+1GLQjBewj6y7SVt4/vVhRh19N6wGCRa4H4yuEjg80oCM2iGPVfSyrXKornYvYPx3bNLZBRaUZIXTgvDn1FPiMaMAIpZzmcZhksZ9uqbHM=
-        distributions: sdist bdist_wheel
-        on:
-          tags: true # only deploy on tagged commits
-          branch: master
-          repo: christippett/hangouts-helper
+  - stage: deploy
+    deploy:
+      provider: pypi
+      user: c.tippett
+      password:
+        secure: Pe/GTk8fOWkSMzemBsXmc4KSo3PWCA8XBHphWx+vebVcz4GIpm0PrNmYjXKX+En4/3xvuuLfgcV+g5Jy2O/nKRI7oQ9YSO1XwUu2N1mSbtCTRCRbjHyZkrFfb8gJOijpoaPmyTzXSE6Kt9Os5jv/5Fasm2L8GuLuD7R6ywZNGp3ZsRVdkyTi/GBpSR0kT2qOWFOW/XihxaZ/HGmiPWEHKEMoJ0i6dw/DIHXDA+3NfD6bXgi4pNKK1qWCcX68egO/V4P4+acqR9OtHbY5zK2vfAIsxqCcAcv4MkW1+unt3zCe3RjQTfyB1Zbe9CBejVU+kp5+CNXzrDMIs7dJk9p1ZPN/PLipJ00CWH73DOt33nxSVEHDucybPOAxouALYHW5Yd1Iwqf6/Iymv08eBV6oHfbUGVbZJXGvFJ1CoaWPL3kX7fRHISmL/ITzqxeQdONB4VqiS5TKF3UlSDz6ir5KFcjpjf4BpgHf5RVSTgzHtLnBnryGWM/pjhoE3Km2R4M+eTjbTcBjTCvKv+btB5aE/QLaTiFMj0N2tW3ik91KxbKXh8Ui5Vn0UkakIX3+mI50fg/zFOUITjAPU3L8CvouwxVfidwxasPD1D62UyGBS0vlqP0Blia7kGLebg5xl2OuzPPAlTAoi5INb3ZHeTswxvXgwrFDBToMuf7KxSnOSxg=
+      distributions: sdist bdist_wheel
+      on:
+        tags: true
+        branch: master
+        repo: christippett/hangouts-helper
