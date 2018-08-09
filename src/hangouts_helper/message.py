@@ -51,9 +51,9 @@ class OnClickMixin:
         self.link_url = url
         return self
 
-    def add_action(self, action_method_name, parameters=None):
+    def add_action(self, action_method, parameters=None):
         self.action = True
-        self.action_method_name = action_method_name
+        self.action_method = action_method
         self.action_parameters = parameters
         return self
 
@@ -66,7 +66,7 @@ class OnClickMixin:
                     'url': self.link_url
                 }}
         elif action:
-            data = {'actionMethodName': self.action_method_name}
+            data = {'actionMethodName': self.action_method.value}
             if self.action_parameters:
                 data.update({
                     'parameters': [{'key': k, 'value': v} for k, v in self.action_parameters.items()]
