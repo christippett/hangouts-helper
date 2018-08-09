@@ -66,11 +66,12 @@ class OnClickMixin:
                     'url': self.link_url
                 }}
         elif action:
-            data = {'actionMethodName': self.action_method.value}
+            action_data = {'actionMethodName': self.action_method.value}
             if self.action_parameters:
-                data.update({
+                action_data.update({
                     'parameters': [{'key': k, 'value': v} for k, v in self.action_parameters.items()]
                 })
+            data = {'action': action_data}
         if link or action:
             on_click = {'onClick': data}
             widget.update(on_click)
