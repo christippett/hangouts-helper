@@ -128,6 +128,12 @@ class Card:
             elif isinstance(component, CardAction):
                 self.card_actions.append(component)
 
+    def add_section(self, section):
+        self.sections.append(section)
+
+    def add_action(self, action):
+        self.card_actions.append(action)
+
     def output(self):
         sections = [s.output() for s in self.sections]
         card = {'sections': sections}
