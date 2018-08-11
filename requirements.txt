@@ -3,4 +3,5 @@ pylint
 pytest
 coverage
 pytest-cov
+pytest-mock
 tox
