@@ -173,7 +173,7 @@ from flask import Flask, jsonify
 app = Flask(__name__)
 
 @app.route('/')
-def hello_world():
+def bot_handler():
     event = request.json
     handler = MyHangoutsChatHandler()
     response_message = handler.handle_event(event)
