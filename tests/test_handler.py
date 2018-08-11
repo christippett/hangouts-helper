@@ -112,4 +112,5 @@ def test_exception_during_event_handling(mocker, handler, create_event):
     mocker.patch.object(HangoutsChatHandler, 'handle_exception')
     handler.handle_message.side_effect = Exception
     handler.handle_chat_event(event)
-    handler.handle_exception.assert_called_once()
+    handler.handle_exception.call_count == 1
+
