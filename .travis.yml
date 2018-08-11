@@ -6,18 +6,18 @@ python:
 - 3.6
 - 3.7-dev
 install:
-- pip install -U pip
-- pip install tox coveralls
+- pip install -U pip tox
 script:
 - tox -e $(echo py$TRAVIS_PYTHON_VERSION | tr -d . | sed -e 's/pypypy/pypy/' | sed
   -e 's/-dev//')
-after_success:
-- coveralls --verbose
 notifications:
   email: false
 jobs:
   include:
   - stage: deploy
+    python: 3.6
+    install: pip install coveralls
+    after_success: coveralls --verbose
     deploy:
       provider: pypi
       user: c.tippett
