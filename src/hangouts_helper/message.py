@@ -107,7 +107,7 @@ class Message:
             response_type = {'type': self.response_type.value}
             if self.response_type == ResponseType.REQUEST_CONFIG:
                 response_type.update({'url': self.response_url})
-            message.update({'responseType': response_type})
+            message.update({'actionResponse': response_type})
         return message
 
 
