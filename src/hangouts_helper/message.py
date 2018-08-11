@@ -86,6 +86,12 @@ class Message:
         self.response_url = kwargs.get('response_url')
         self.text = kwargs.get('text')
 
+    @classmethod
+    def request_config(cls, url):
+        return cls(
+            response_type=ResponseType.REQUEST_CONFIG,
+            response_url=url)
+
     def add_card(self, card):
         self.cards.append(card)
 
