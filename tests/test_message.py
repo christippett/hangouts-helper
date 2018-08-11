@@ -70,8 +70,30 @@ def test_add_action():
             }
         }
     }
-    output = button.output()
     assert button.output() == expected
+
+def test_section_with_header():
+    section = Section('Header', Image('https://placeimg.com/640/480/animals'))
+    expected = {
+        'header': 'Header',
+        'widgets': [{
+            'image': {
+                'imageUrl': 'https://placeimg.com/640/480/animals'
+            }
+        }]
+    }
+    assert section.output() == expected
+
+def test_section_without_header():
+    section = Section(Image('https://placeimg.com/640/480/animals'))
+    expected = {
+        'widgets': [{
+            'image': {
+                'imageUrl': 'https://placeimg.com/640/480/animals'
+            }
+        }]
+    }
+    assert section.output() == expected
 
 def test_pizza_bot_full_example(pizza_bot_message):
     message = Message()
@@ -81,14 +103,14 @@ def test_pizza_bot_full_example(pizza_bot_message):
                 title='Pizza Bot Customer Support',
                 subtitle='pizzabot@example.com',
                 image_url='https://goo.gl/aeDtrS'),
-        Section(
-            KeyValue(top_label='Order No.', content='12345'),
-            KeyValue(top_label='Status', content='In Delivery')),
-        Section(
-            'Location',
-            Image(image_url='https://maps.googleapis.com/...')),
-        Section(
-            ButtonList(
-                TextButton(text='OPEN ORDER').add_link(url='https://example.com/orders/...')))))
+            Section(
+                KeyValue(top_label='Order No.', content='12345'),
+                KeyValue(top_label='Status', content='In Delivery')),
+            Section(
+                'Location',
+                Image(image_url='https://maps.googleapis.com/...')),
+            Section(
+                ButtonList(
+                    TextButton(text='OPEN ORDER').add_link(url='https://example.com/orders/...')))))
 
     assert message.output() == pizza_bot_message
