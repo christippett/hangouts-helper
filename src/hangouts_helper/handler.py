@@ -33,24 +33,25 @@ class HangoutsChatHandler:
         self.log = logger
         self.debug = debug
 
-    def handle_event(self, event, sent_asynchronously=False):
-        self.sent_asynchronously = sent_asynchronously
-        event_type = EventType(event['type'])
-        space_type = SpaceType(event['space']['type'])
-        if event_type == EventType.ADDED_TO_SPACE:
-            return self.handle_added_to_space(space_type, event)
-        elif event_type == EventType.REMOVED_FROM_SPACE:
-            return self.handle_removed_from_space(event)
-        elif event_type == EventType.CARD_CLICKED:
-            try:
+    def handle_chat_event(self, event, sent_asynchronously=False):
+        try:
+            self.sent_asynchronously = sent_asynchronously
+            event_type = EventType(event['type'])
+            space_type = SpaceType(event['space']['type'])
+            if event_type == EventType.ADDED_TO_SPACE:
+                return self.handle_added_to_space(space_type, event)
+            elif event_type == EventType.REMOVED_FROM_SPACE:
+                return self.handle_removed_from_space(space_type, event)
+            elif event_type == EventType.CARD_CLICKED:
                 action_method = self.ActionMethod(event['action']['actionMethodName'])
                 action_parameters = self._parse_action_parameters(event['action']['parameters'])
                 return self.handle_card_clicked(action_method, action_parameters, event)
-            except ValueError as e:
-                return self.handle_exception(e, event)
-        elif event_type == EventType.MESSAGE:
-            message = event['message']['text']
-            return self.handle_message(message, event)
+            elif event_type == EventType.MESSAGE:
+                message = event['message']['text']
+                return self.handle_message(message, event)
+        except Exception as e:
+            logging.exception('Error handling chat event')
+            return self.handle_exception(e, event)
 
     def handle_exception(self, e, event=None):
         if self.debug:
