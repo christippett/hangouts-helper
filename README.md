@@ -53,18 +53,18 @@ message.add_card(
             title='Pizza Bot Customer Support',
             subtitle='pizzabot@example.com',
             image_url='https://goo.gl/aeDtrS'),
-    Section(
-        KeyValue(top_label='Order No.', content='12345'),
-        KeyValue(top_label='Status', content='In Delivery')),
-    Section(
-        'Location',
-        Image(image_url='https://maps.googleapis.com/...')),
-    Section(
-        ButtonList(
-            TextButton(text='OPEN ORDER').add_link(url='https://example.com/orders/...')))))
+        Section(
+            KeyValue(top_label='Order No.', content='12345'),
+            KeyValue(top_label='Status', content='In Delivery')),
+        Section(
+            'Location',
+            Image(image_url='https://maps.googleapis.com/...')),
+        Section(
+            ButtonList(
+                TextButton(text='OPEN ORDER').add_link(url='https://example.com/orders/...')))))
 ```
 
-The raw message output is available from `message.output()`. After converting to JSON, the message looks like this:
+Calling `message.output()` produces a `dict` that can be converted to JSON... perfect for returning a response to a synchronous chat event, or sending a new message via the Hangouts Chat API.
 
 ```javascript
 {
@@ -150,7 +150,7 @@ class MyHangoutsChatHandler(HangoutsChatHandler):
 
     def handle_added_to_space(self, space_type, event):
         if space_type == SpaceType.DM:
-            return Message(text="Thanks DM'ing me!")
+            return Message(text="Thanks for DM'ing me!")
         elif space_type == SpaceType.ROOM:
             return Message(text="Thanks adding me to your room!")
 
