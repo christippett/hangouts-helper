@@ -1,0 +1,57 @@
+{
+  "cards": [
+      {
+          "header": {
+              "imageUrl": "https://goo.gl/aeDtrS",
+              "subtitle": "pizzabot@example.com",
+              "title": "Pizza Bot Customer Support"
+          },
+          "sections": [
+              {
+                  "widgets": [
+                      {
+                          "keyValue": {
+                              "content": "12345",
+                              "topLabel": "Order No."
+                          }
+                      },
+                      {
+                          "keyValue": {
+                              "content": "In Delivery",
+                              "topLabel": "Status"
+                          }
+                      }
+                  ]
+              },
+              {
+                  "header": "Location",
+                  "widgets": [
+                      {
+                          "image": {
+                              "imageUrl": "https://maps.googleapis.com/..."
+                          }
+                      }
+                  ]
+              },
+              {
+                  "widgets": [
+                      {
+                          "buttons": [
+                              {
+                                  "textButton": {
+                                      "onClick": {
+                                          "openLink": {
+                                              "url": "https://example.com/orders/..."
+                                          }
+                                      },
+                                      "text": "OPEN ORDER"
+                                  }
+                              }
+                          ]
+                      }
+                  ]
+              }
+          ]
+      }
+  ]
+}
