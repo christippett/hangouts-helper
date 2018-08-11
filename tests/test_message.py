@@ -46,7 +46,9 @@ def test_add_action():
     from enum import Enum
     class ActionMethod(Enum):
         TEST_METHOD = 'TEST_METHOD'
-    parameters = OrderedDict({'param1': 'value1', 'param2': 'value2'})
+    parameters = OrderedDict()
+    parameters['param1'] = 'value1'
+    parameters['param2'] = 'value2'
     button = TextButton(text='OPEN ORDER').add_action(
         action_method=ActionMethod.TEST_METHOD,
         parameters=parameters)
@@ -68,6 +70,7 @@ def test_add_action():
             }
         }
     }
+    output = button.output()
     assert button.output() == expected
 
 def test_pizza_bot_full_example(pizza_bot_message):
