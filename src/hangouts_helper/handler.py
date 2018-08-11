@@ -15,6 +15,11 @@ class SpaceType(Enum):
     DIRECT_MESSAGE = 'DM'
 
 
+class UserType(Enum):
+    HUMAN = 'HUMAN'
+    BOT = 'BOT'
+
+
 class HangoutsChatHandler:
     SpaceType = SpaceType
     EventType = EventType
