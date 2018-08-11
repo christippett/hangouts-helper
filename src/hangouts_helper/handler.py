@@ -65,7 +65,7 @@ class HangoutsChatHandler:
     def handle_card_clicked(self, action_method, action_parameters, event):
         pass
 
-    def handle_removed_from_space(self, event):
+    def handle_removed_from_space(self, space_type, event):
         pass
 
     def _parse_action_parameters(self, parameters):
