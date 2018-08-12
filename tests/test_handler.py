@@ -8,11 +8,8 @@ from hangouts_helper.handler import HangoutsChatHandler, EventType, SpaceType
 
 @pytest.fixture
 def handler(mocker):
-    from enum import Enum
     class ActionMethod(Enum):
         TEST_ACTION = 'TEST_ACTION'
-    m = mocker.patch('hangouts_helper.api.HangoutsChatAPI._initialize_api')
-    m.return_value = mocker.Mock()
     handler = HangoutsChatHandler()
     handler.ActionMethod = ActionMethod
     return handler

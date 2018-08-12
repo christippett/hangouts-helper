@@ -1,8 +1,6 @@
 import logging
 from enum import Enum
 
-from .api import HangoutsChatAPI
-
 
 class EventType(Enum):
     ADDED_TO_SPACE = 'ADDED_TO_SPACE'
@@ -26,12 +24,11 @@ class HangoutsChatHandler:
     EventType = EventType
     ActionMethod = Enum
 
-    def __init__(self, service_account_info=None, logger=None, debug=False):
+    def __init__(self, logger=None, debug=False):
         if logger is None:
             logger = logging.getLogger(__name__)
         self.log = logger
         self.debug = debug
-        self.chat = HangoutsChatAPI(service_account_info)
 
     def _parse_action_parameters(self, parameters):
         parsed_parameters = {}
