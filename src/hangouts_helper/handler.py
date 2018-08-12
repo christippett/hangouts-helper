@@ -44,20 +44,25 @@ class HangoutsChatHandler:
             event_type = EventType(event['type'])
             space_type = SpaceType(event['space']['type'])
             if event_type == EventType.ADDED_TO_SPACE:
-                return self.handle_added_to_space(space_type, event=event)
+                response = self.handle_added_to_space(space_type, event=event)
             elif event_type == EventType.REMOVED_FROM_SPACE:
-                return self.handle_removed_from_space(space_type, event=event)
+                response = self.handle_removed_from_space(space_type, event=event)
             elif event_type == EventType.CARD_CLICKED:
                 action_method = self.ActionMethod(event['action']['actionMethodName'])
                 parameters = event['action'].get('parameters', {})
                 if parameters:
                     parameters = self._parse_action_parameters(parameters)
+                response = self.handle_card_clicked(action_method, parameters, event=event)
             elif event_type == EventType.MESSAGE:
                 message = event['message']
-                return self.handle_message(message, event=event)
+                response = self.handle_message(message, event=event)
         except Exception as e:
             logging.exception('Error handling chat event')
-            return self.handle_exception(e, event=event)
+            response = self.handle_exception(e, event=event)
+        return self.handle_response(response)
+
+    def handle_response(self, response):
+        return response
 
     def handle_exception(self, e, **kwargs):
         if self.debug:
