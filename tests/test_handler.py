@@ -53,7 +53,7 @@ def test_handle_added_to_space(mocker, handler, create_event, space_type):
     event = create_event(event_type='ADDED_TO_SPACE', space_type=space_type.value)
     mocker.patch.object(HangoutsChatHandler, 'handle_added_to_space')
     handler.handle_chat_event(event)
-    handler.handle_added_to_space.assert_called_once_with(space_type, event)
+    handler.handle_added_to_space.assert_called_once_with(space_type, event=event)
 
 @pytest.mark.parametrize("space_type", [SpaceType.ROOM, SpaceType.DIRECT_MESSAGE])
 def test_handle_removed_from_space(mocker, handler, create_event, space_type):
@@ -61,13 +61,13 @@ def test_handle_removed_from_space(mocker, handler, create_event, space_type):
     event = create_event(event_type='REMOVED_FROM_SPACE', space_type=space_type_str)
     mocker.patch.object(HangoutsChatHandler, 'handle_removed_from_space')
     handler.handle_chat_event(event)
-    handler.handle_removed_from_space.assert_called_once_with(space_type, event)
+    handler.handle_removed_from_space.assert_called_once_with(space_type, event=event)
 
 def test_handle_message(mocker, handler, create_event):
     event = create_event(event_type='MESSAGE', message_text='Hello')
     mocker.patch.object(HangoutsChatHandler, 'handle_message')
     handler.handle_chat_event(event)
-    handler.handle_message.assert_called_once_with('Hello', event)
+    handler.handle_message.assert_called_once_with(event['message'], event=event)
 
 def test_handle_card_clicked(mocker, handler, create_event):
     action_method_name = 'TEST_ACTION'
@@ -86,7 +86,7 @@ def test_handle_card_clicked(mocker, handler, create_event):
     handler.handle_card_clicked.assert_called_once_with(
         handler.ActionMethod.TEST_ACTION,
         expected_parameters,
-        event)
+        event=event)
 
 def test_parse_action_parameters(handler):
     parameters = [

@@ -44,32 +44,32 @@ class HangoutsChatHandler:
             event_type = EventType(event['type'])
             space_type = SpaceType(event['space']['type'])
             if event_type == EventType.ADDED_TO_SPACE:
-                return self.handle_added_to_space(space_type, event)
+                return self.handle_added_to_space(space_type, event=event)
             elif event_type == EventType.REMOVED_FROM_SPACE:
-                return self.handle_removed_from_space(space_type, event)
+                return self.handle_removed_from_space(space_type, event=event)
             elif event_type == EventType.CARD_CLICKED:
                 action_method = self.ActionMethod(event['action']['actionMethodName'])
                 action_parameters = self._parse_action_parameters(event['action']['parameters'])
-                return self.handle_card_clicked(action_method, action_parameters, event)
+                return self.handle_card_clicked(action_method, action_parameters, event=event)
             elif event_type == EventType.MESSAGE:
-                message = event['message']['text']
-                return self.handle_message(message, event)
+                message = event['message']
+                return self.handle_message(message, event=event)
         except Exception as e:
             logging.exception('Error handling chat event')
-            return self.handle_exception(e, event)
+            return self.handle_exception(e, event=event)
 
-    def handle_exception(self, e, event=None):
+    def handle_exception(self, e, **kwargs):
         if self.debug:
             return {'text': str(e)}
 
-    def handle_added_to_space(self, space_type, event):
+    def handle_added_to_space(self, space_type, **kwargs):
         pass
 
-    def handle_message(self, message, event):
+    def handle_message(self, message, **kwargs):
         pass
 
-    def handle_card_clicked(self, action_method, action_parameters, event):
+    def handle_card_clicked(self, action_method, action_parameters, **kwargs):
         pass
 
-    def handle_removed_from_space(self, space_type, event):
+    def handle_removed_from_space(self, space_type, **kwargs):
         pass
