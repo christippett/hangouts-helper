@@ -49,8 +49,9 @@ class HangoutsChatHandler:
                 return self.handle_removed_from_space(space_type, event=event)
             elif event_type == EventType.CARD_CLICKED:
                 action_method = self.ActionMethod(event['action']['actionMethodName'])
-                action_parameters = self._parse_action_parameters(event['action']['parameters'])
-                return self.handle_card_clicked(action_method, action_parameters, event=event)
+                parameters = event['action'].get('parameters', {})
+                if parameters:
+                    parameters = self._parse_action_parameters(parameters)
             elif event_type == EventType.MESSAGE:
                 message = event['message']
                 return self.handle_message(message, event=event)
