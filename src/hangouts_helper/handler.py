@@ -1,6 +1,7 @@
-import os
 import logging
 from enum import Enum
+
+from .api import HangoutsChatAPI
 
 
 class EventType(Enum):
@@ -25,13 +26,20 @@ class HangoutsChatHandler:
     EventType = EventType
     ActionMethod = Enum
 
-    def __init__(self, logger=None, parameters=None, debug=False):
-        if parameters is None:
-            self.parameters = os.environ
+    def __init__(self, service_account_info=None, logger=None, debug=False):
         if logger is None:
             logger = logging.getLogger(__name__)
         self.log = logger
         self.debug = debug
+        self.chat = HangoutsChatAPI(service_account_info)
+
+    def _parse_action_parameters(self, parameters):
+        parsed_parameters = {}
+        for p in parameters:
+            key = p['key']
+            value = p['value']
+            parsed_parameters[key] = value
+        return parsed_parameters
 
     def handle_chat_event(self, event, sent_asynchronously=False):
         try:
@@ -68,11 +76,3 @@ class HangoutsChatHandler:
 
     def handle_removed_from_space(self, space_type, event):
         pass
-
-    def _parse_action_parameters(self, parameters):
-        parsed_parameters = {}
-        for p in parameters:
-            key = p['key']
-            value = p['value']
-            parsed_parameters[key] = value
-        return parsed_parameters
