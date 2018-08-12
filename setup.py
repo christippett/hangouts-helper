@@ -3,6 +3,11 @@ from setuptools import setup, find_packages
 
 LONG_DESCRIPTION = open('README.md').read()
 
+INSTALL_REQUIRES = [
+    'google-api-python-client',
+    'google-auth-httplib2'
+]
+
 
 setup(
     name='hangouts-helper',
@@ -17,6 +22,7 @@ setup(
     license='MIT',
     package_dir={'': 'src'},
     packages=find_packages('src'),
+    install_requires=INSTALL_REQUIRES,
     zip_safe=False,
     classifiers=[
         'Environment :: Web Environment',
