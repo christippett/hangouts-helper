@@ -1,6 +1,7 @@
 # Google OAuth
 google-api-python-client
 google-auth
+google-auth-httplib2
 
 # Test dependencies
 pylint
