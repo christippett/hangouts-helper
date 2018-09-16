@@ -1,24 +1,29 @@
-import os
 import json
+import os
 
+import google.auth
 import google_auth_httplib2
-from googleapiclient import discovery
 from google.oauth2 import service_account
+from googleapiclient import discovery
 
 
 class HangoutsChatAPI:
     GOOGLE_CHAT_SCOPES = ['https://www.googleapis.com/auth/chat.bot']
 
-    def __init__(self, service_account_info=None):
-        self.api = self._initialize_api(service_account_info)
+    def __init__(self, service_account_info=None, service_account_file=None):
+        self.api = self._initialize_api(
+            service_account_info, service_account_file)
 
-    def _initialize_api(self, service_account_info):
-        if service_account_info is None and os.environ.get('GOOGLE_APPLICATION_CREDENTIALS'):
-            with open(os.environ.get('GOOGLE_APPLICATION_CREDENTIALS')) as f:
-                service_account_info = json.loads(f.read())
-        credentials = service_account.Credentials.from_service_account_info(
-            service_account_info, scopes=self.GOOGLE_CHAT_SCOPES)
-        http = google_auth_httplib2.AuthorizedHttp(credentials)
+    def _initialize_api(self, service_account_info=None, service_account_file=None):
+        if service_account_info is not None:
+            creds = service_account.Credentials.from_service_account_info(
+                service_account_info, scopes=self.GOOGLE_CHAT_SCOPES)
+        elif service_account_file is not None:
+            creds = service_account.Credentials.from_service_account_file(
+                service_account_info, scopes=self.GOOGLE_CHAT_SCOPES)
+        else:
+            creds, _ = google.auth.default(scopes=self.GOOGLE_CHAT_SCOPES)
+        http = google_auth_httplib2.AuthorizedHttp(creds)
         return discovery.build('chat', 'v1', http=http)
 
     def list_spaces(self, page_size=100):
