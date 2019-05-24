@@ -5,7 +5,8 @@ LONG_DESCRIPTION = open('README.md').read()
 
 INSTALL_REQUIRES = [
     'google-api-python-client',
-    'google-auth-httplib2'
+    'google-auth-httplib2',
+    'setuptools'
 ]
 
 
