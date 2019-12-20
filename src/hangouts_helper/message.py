@@ -1,5 +1,4 @@
 from enum import Enum
-from collections import Iterable
 
 
 class ImageStyle(Enum):
@@ -263,12 +262,13 @@ class ImageButton(OnClickMixin):
         self.name = name
 
     def output(self):
+        button = {}
         if self.icon is not None:
             button = {'icon': self.icon.value}
         elif self.icon_url is not None:
             button = {'iconUrl': self.icon_url}
         if self.name is not None:
-            button = {'name': self.name}
+            button['name'] = self.name
         self._update_on_click(button)
         return {'imageButton': button}
 
