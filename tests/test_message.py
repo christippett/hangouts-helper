@@ -3,7 +3,7 @@ import pytest
 from collections import OrderedDict
 
 from hangouts_helper.message import (Message, Card, CardHeader, Section,
-    Image, KeyValue, ButtonList, TextButton)
+    Image, KeyValue, ButtonList, TextButton, ImageButton)
 
 
 @pytest.fixture
@@ -94,6 +94,16 @@ def test_section_without_header():
         }]
     }
     assert section.output() == expected
+
+def test_image_button_with_link_and_name():
+    button = ImageButton(icon_url="http://example.com/logo.png", name="My Tooltip")
+    expected = {
+        'imageButton': {
+            'iconUrl': 'http://example.com/logo.png',
+            'name': 'My Tooltip'
+        }
+    }
+    assert button.output() == expected
 
 def test_pizza_bot_full_example(pizza_bot_message):
     message = Message()
